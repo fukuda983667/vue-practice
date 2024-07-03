@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <a href="./practice-1.html">演習問題1</a>
+        <a href="./practice-2.html">演習問題2</a>
+        <a href="./practice-3.html">演習問題3</a>
+        <div id="app">
+            <div class="wrapper">
+                <div class="tab" :class="{active: activeTab === 1}" @click="selectTab(1)">タブ1</div>
+                <div class="tab" :class="{active: activeTab === 2}" @click="selectTab(2)">タブ2</div>
+                <div class="tab" :class="{active: activeTab === 3}" @click="selectTab(3)">タブ3</div>
+            </div>
+            <div v-show="activeTab === 1">コンテンツ1</div>
+            <div v-show="activeTab === 2">コンテンツ2</div>
+            <div v-show="activeTab === 3">コンテンツ3</div>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    activeTab: 1
+                },
+                methods: {
+                    selectTab: function (tab) {
+                        this.activeTab = tab;
+                    }
+                }
+            })
+        </script>
+
+        <style>
+            .wrapper {
+                display: flex;
+            }
+            .tab {
+                padding: 5px 30px;
+                cursor: pointer;
+                border: 1px solid #bfbfbf;
+            }
+            .active {
+                background-color: black;
+                color: white;
+                border: none;
+            }
+        </style>
+    </body>
+
+</html>

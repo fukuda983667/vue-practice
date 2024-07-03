@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <a href="./practice-1.html">演習問題1</a>
+        <a href="./practice-2.html">演習問題2</a>
+        <a href="./practice-3.html">演習問題3</a>
+        <div id="app">
+            <input type="text" class="serch" v-model="searchQuery">
+            <ul class="user-list">
+                <li v-for="user in filteredUsers" :key="user" class="user-name">{{ user }}</li>
+            </ul>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    searchQuery: '',
+                    users: ['佐藤', '山田', '鈴木', '田中', '高橋', '伊藤']
+                },
+                computed: {
+                    filteredUsers() {
+                        //searchQueryが含まれるuserだけを格納した配列を返す。
+                        return this.users.filter(user => user.includes(this.searchQuery));
+                    }
+                }
+            })
+        </script>
+
+        <style>
+            .user-list {
+                padding: 0;
+            }
+            .user-name {
+                list-style: none;
+            }
+            .search {
+                display: block;
+                margin-bottom: 10px;
+            }
+        </style>
+    </body>
+
+</html>
